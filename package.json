@@ -1,7 +1,7 @@
 {
   "name": "ally-custom-driver",
-  "version": "0.0.0",
-  "description": "A boilerplate for a custom ally driver",
+  "version": "1.0.0",
+  "description": "AdonisJS Ally x RD Station",
   "main": "build/providers/index.js",
   "files": [
     "build/src",
@@ -27,16 +27,17 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@adonisjs/ally": "^4.0.0",
-    "@adonisjs/core": "^5.1.8",
-    "@types/node": "^15.12.2",
-    "del-cli": "^3.0.1",
-    "eslint": "^7.28.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-adonis": "^1.3.2",
-    "eslint-plugin-prettier": "^3.4.0",
-    "prettier": "^2.3.1",
-    "typescript": "^4.3.2"
+    "@adonisjs/ally": "^4.1.5",
+    "@adonisjs/core": "^5.9.0",
+    "@types/node": "^20.8.6",
+    "del-cli": "^5.1.0",
+    "eslint": "^8.51.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-adonis": "^2.1.1",
+    "eslint-plugin-prettier": "^5.0.1",
+    "prettier": "^3.0.3",
+    "typescript": "~4.6",
+    "yarn-upgrade-all": "^0.7.2"
   },
   "peerDependencies": {
     "@adonisjs/ally": "^4.0.0",
@@ -45,8 +46,8 @@
   "adonisjs": {
     "instructionsMd": "./build/instructions.md",
     "env": {
-      "YOUR_DRIVER_CLIENT_ID": "",
-      "YOUR_DRIVER_CLIENT_SECRET": ""
+      "RD_STATION_CLIENT_ID": "",
+      "RD_STATION_CLIENT_SECRET": ""
     },
     "types": "ally-custom-driver",
     "providers": [

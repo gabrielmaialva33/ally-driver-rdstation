@@ -20,10 +20,10 @@ import { Oauth2Driver, ApiRequest } from '@adonisjs/ally/build/standalone'
  * more properties.
  *
  * ------------------------------------------------
- * Change "YourDriver" to something more relevant
+ * Change "RDStation" to something more relevant
  * ------------------------------------------------
  */
-export type YourDriverAccessToken = {
+export type RDStationAccessToken = {
   token: string
   type: 'bearer'
 }
@@ -33,21 +33,21 @@ export type YourDriverAccessToken = {
  * https://github.com/adonisjs/ally/blob/develop/adonis-typings/ally.ts#L236-L268
  *
  * ------------------------------------------------
- * Change "YourDriver" to something more relevant
+ * Change "RDStation" to something more relevant
  * ------------------------------------------------
  */
-export type YourDriverScopes = string
+export type RDStationScopes = string
 
 /**
  * Define the configuration options accepted by your driver. It must have the following
- * properties and you are free add more.
+ * properties, and you are free add more.
  *
  * ------------------------------------------------
- * Change "YourDriver" to something more relevant
+ * Change "RDStation" to something more relevant
  * ------------------------------------------------
  */
-export type YourDriverConfig = {
-  driver: 'YourDriverName'
+export type RDStationConfig = {
+  driver: 'RDStation'
   clientId: string
   clientSecret: string
   callbackUrl: string
@@ -60,10 +60,10 @@ export type YourDriverConfig = {
  * Driver implementation. It is mostly configuration driven except the user calls
  *
  * ------------------------------------------------
- * Change "YourDriver" to something more relevant
+ * Change "RDStation" to something more relevant
  * ------------------------------------------------
  */
-export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverScopes> {
+export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStationScopes> {
   /**
    * The URL for the redirect request. The user will be redirected on this page
    * to authorize the request.
@@ -125,7 +125,10 @@ export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverSc
    */
   protected scopesSeparator = ' '
 
-  constructor(ctx: HttpContextContract, public config: YourDriverConfig) {
+  constructor(
+    ctx: HttpContextContract,
+    public config: RDStationConfig
+  ) {
     super(ctx, config)
 
     /**
@@ -168,7 +171,7 @@ export class YourDriver extends Oauth2Driver<YourDriverAccessToken, YourDriverSc
    */
   public async user(
     callback?: (request: ApiRequest) => void
-  ): Promise<AllyUserContract<YourDriverAccessToken>> {
+  ): Promise<AllyUserContract<RDStationAccessToken>> {
     const accessToken = await this.accessToken()
     const request = this.httpClient(this.config.userInfoUrl || this.userInfoUrl)
 

@@ -1,14 +1,14 @@
 import type { ApplicationContract } from '@ioc:Adonis/Core/Application'
 
-export default class YourDriverProvider {
+export default class RDStationProvider {
   constructor(protected app: ApplicationContract) {}
 
   public async boot() {
     const Ally = this.app.container.resolveBinding('Adonis/Addons/Ally')
-    const { YourDriver } = await import('../src/YourDriver')
+    const { RDStationDriver } = await import('../src/RDStation')
 
-    Ally.extend('yourdriver', (_, __, config, ctx) => {
-      return new YourDriver(ctx, config)
+    Ally.extend('rdstation', (_, __, config, ctx) => {
+      return new RDStationDriver(ctx, config)
     })
   }
 }
