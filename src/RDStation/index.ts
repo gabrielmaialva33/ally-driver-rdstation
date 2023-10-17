@@ -12,7 +12,7 @@
 
 import type { AllyUserContract } from '@ioc:Adonis/Addons/Ally'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { Oauth2Driver, ApiRequest } from '@adonisjs/ally/build/standalone'
+import { ApiRequest, Oauth2Driver } from '@adonisjs/ally/build/standalone'
 
 /**
  * Define the access token object properties in this type. It
@@ -84,7 +84,7 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    *
    * Do not define query strings in this URL.
    */
-  protected userInfoUrl = 'https://api.rd.services/platform/contacts'
+  protected userInfoUrl = ''
   /**
    * The param name for the authorization code. Read the documentation of your oauth
    * provider and update the param name to match the query string field name in
@@ -185,9 +185,7 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
     /**
      * Write your implementation details here
      */
-    const user = await request.get().then((response) => response.json())
-
-    return { ...user, token: accessToken }
+    return { ...accessToken, ...this.decodeUserToken(accessToken.token) }
   }
 
   public async userFromToken(
@@ -207,11 +205,24 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
     /**
      * Write your implementation details here
      */
-    const user = await request.get().then((response) => response.json())
 
-    return {
-      ...user,
-      token: { token: accessToken, type: 'bearer' as const },
+    return { token: accessToken, type: 'bearer', ...this.decodeUserToken(accessToken) }
+  }
+
+  /**
+   * Decode token and extract user details
+   */
+  protected decodeUserToken(accessToken: string) {
+    function base64UrlDecode(str: string) {
+      // Padding for base64 to be valid
+      str = str.replace(/-/g, '+').replace(/_/g, '/')
+      while (str.length % 4) {
+        str += '='
+      }
+      return Buffer.from(str, 'base64').toString()
     }
+
+    const parts = accessToken.split('.')
+    return JSON.parse(base64UrlDecode(parts[1]))
   }
 }
