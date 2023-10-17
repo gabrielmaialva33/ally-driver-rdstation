@@ -1,5 +1,5 @@
 {
-  "name": "ally-custom-driver",
+  "name": "adonis-ally-rdstation",
   "version": "1.0.0",
   "description": "AdonisJS Ally x RD Station",
   "main": "build/providers/index.js",
