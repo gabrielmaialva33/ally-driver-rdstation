@@ -70,7 +70,7 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    *
    * Do not define query strings in this URL.
    */
-  protected authorizeUrl = 'https://api.rd.services/auth'
+  protected authorizeUrl = 'https://api.rd.services/auth/dialog'
 
   /**
    * The URL to hit to exchange the authorization code for the access token
