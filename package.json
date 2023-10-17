@@ -1,6 +1,6 @@
 {
   "name": "adonis-ally-rdstation",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "AdonisJS Ally x RD Station",
   "main": "build/providers/index.js",
   "files": [
@@ -56,9 +56,9 @@
       "RD_STATION_CLIENT_ID": "",
       "RD_STATION_CLIENT_SECRET": ""
     },
-    "types": "ally-driver-rdstation",
+    "types": "adonis-ally-rdstation",
     "providers": [
-      "ally-driver-rdstation"
+      "adonis-ally-rdstation"
     ]
   }
 }
