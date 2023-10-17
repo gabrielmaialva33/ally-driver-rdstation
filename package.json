@@ -10,6 +10,11 @@
     "build/standalone.d.ts",
     "build/instructions.md"
   ],
+  "homepage": "https://github.com/gabrielmaialva33/ally-driver-rdstation.git#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielmaialva33/ally-driver-rdstation.git"
+  },
   "scripts": {
     "clean": "del build",
     "copyfiles": "copyfiles \"instructions.md\" build",
@@ -22,7 +27,8 @@
   },
   "keywords": [
     "adonisjs",
-    "adonis-ally"
+    "adonis-ally",
+    "rdstation"
   ],
   "author": "",
   "license": "MIT",
