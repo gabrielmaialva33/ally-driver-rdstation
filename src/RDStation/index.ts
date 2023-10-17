@@ -70,22 +70,21 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    *
    * Do not define query strings in this URL.
    */
-  protected authorizeUrl = ''
+  protected authorizeUrl = 'https://api.rd.services/auth'
 
   /**
    * The URL to hit to exchange the authorization code for the access token
    *
    * Do not define query strings in this URL.
    */
-  protected accessTokenUrl = ''
+  protected accessTokenUrl = 'https://api.rd.services/auth/token'
 
   /**
    * The URL to hit to get the user details
    *
    * Do not define query strings in this URL.
    */
-  protected userInfoUrl = ''
-
+  protected userInfoUrl = 'https://api.rd.services/platform/contacts'
   /**
    * The param name for the authorization code. Read the documentation of your oauth
    * provider and update the param name to match the query string field name in
@@ -105,7 +104,7 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    * approach is to prefix the oauth provider name to `oauth_state` value. For example:
    * For example: "facebook_oauth_state"
    */
-  protected stateCookieName = 'YourDriver_oauth_state'
+  protected stateCookieName = 'rdstation_oauth_state'
 
   /**
    * Parameter name to be used for sending and receiving the state from.
@@ -186,6 +185,9 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
     /**
      * Write your implementation details here
      */
+    const user = await request.get().then((response) => response.json())
+
+    return { ...user, token: accessToken }
   }
 
   public async userFromToken(
@@ -205,5 +207,11 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
     /**
      * Write your implementation details here
      */
+    const user = await request.get().then((response) => response.json())
+
+    return {
+      ...user,
+      token: { token: accessToken, type: 'bearer' as const },
+    }
   }
 }

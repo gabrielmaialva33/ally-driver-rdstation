@@ -30,6 +30,7 @@
     "@adonisjs/ally": "^4.1.5",
     "@adonisjs/core": "^5.9.0",
     "@types/node": "^20.8.6",
+    "copyfiles": "^2.4.1",
     "del-cli": "^5.1.0",
     "eslint": "^8.51.0",
     "eslint-config-prettier": "^9.0.0",
@@ -49,9 +50,9 @@
       "RD_STATION_CLIENT_ID": "",
       "RD_STATION_CLIENT_SECRET": ""
     },
-    "types": "ally-custom-driver",
+    "types": "@gabrielmaialva33/ally-driver-rdstation",
     "providers": [
-      "ally-custom-driver"
+      "@gabrielmaialva33/ally-driver-rdstation"
     ]
   }
 }
