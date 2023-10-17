@@ -56,9 +56,9 @@
       "RD_STATION_CLIENT_ID": "",
       "RD_STATION_CLIENT_SECRET": ""
     },
-    "types": "@gabrielmaialva33/ally-driver-rdstation",
+    "types": "ally-driver-rdstation",
     "providers": [
-      "@gabrielmaialva33/ally-driver-rdstation"
+      "ally-driver-rdstation"
     ]
   }
 }
