@@ -146,6 +146,11 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    */
   protected configureRedirectRequest(request: RedirectRequest<`RDStation`>) {
     request.scopes(['user'])
+
+    /**
+     * Clear the state cookie when request is not stateless to prevent stateMismatch
+     */
+    request.clear()
   }
 
   /**
@@ -154,11 +159,6 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    * the request
    */
   protected configureAccessTokenRequest(request: ApiRequest) {
-    /**
-     * Clear the state cookie when request is not stateless to prevent stateMismatch
-     */
-    request.clear()
-
     /**
      * Send state to rd when request is not stateles
      */
