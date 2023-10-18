@@ -155,13 +155,16 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    */
   protected configureAccessTokenRequest(request: ApiRequest) {
     /**
+     * Clear the state cookie when request is not stateless to prevent stateMismatch
+     */
+    request.clear()
+
+    /**
      * Send state to rd when request is not stateles
      */
     if (!this.isStateless) {
       request.field('state', this.stateCookieValue)
     }
-
-    request.clearField('grant_type')
   }
 
   /**
