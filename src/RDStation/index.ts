@@ -151,7 +151,9 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    * the base implementation of "Oauth2" driver and this is a hook to pre-configure
    * the request
    */
-  // protected configureAccessTokenRequest(request: ApiRequest) {}
+  protected configureAccessTokenRequest(request: ApiRequest) {
+    request.clear()
+  }
 
   /**
    * Update the implementation to tell if the error received during redirect
