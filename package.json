@@ -1,6 +1,6 @@
 {
   "name": "adonis-ally-rdstation",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "AdonisJS Ally x RD Station",
   "main": "build/providers/index.js",
   "files": [
