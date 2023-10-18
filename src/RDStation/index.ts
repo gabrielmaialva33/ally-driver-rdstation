@@ -104,7 +104,7 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    * approach is to prefix the oauth provider name to `oauth_state` value. For example:
    * For example: "facebook_oauth_state"
    */
-  protected stateCookieName = 'rd_oauth_state'
+  protected stateCookieName = 'rds_oauth_state'
 
   /**
    * Parameter name to be used for sending and receiving the state from.
@@ -146,11 +146,6 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    */
   protected configureRedirectRequest(request: RedirectRequest<`RDStation`>) {
     request.scopes(['user'])
-
-    /**
-     * Clear the state cookie when request is not stateless to prevent stateMismatch
-     */
-    request.clear()
   }
 
   /**
