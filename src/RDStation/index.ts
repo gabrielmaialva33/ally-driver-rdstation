@@ -206,7 +206,7 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
      * Write your implementation details here
      */
 
-    return { token: accessToken, type: 'bearer', ...this.decodeUserToken(accessToken) }
+    return { token: accessToken, type: 'bearer', decoded: this.decodeUserToken(accessToken) }
   }
 
   /**
