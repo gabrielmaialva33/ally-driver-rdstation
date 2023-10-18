@@ -12,7 +12,7 @@
 
 import type { AllyUserContract } from '@ioc:Adonis/Addons/Ally'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import { ApiRequest, Oauth2Driver } from '@adonisjs/ally/build/standalone'
+import { ApiRequest, Oauth2Driver, RedirectRequest } from '@adonisjs/ally/build/standalone'
 
 /**
  * Define the access token object properties in this type. It
@@ -144,7 +144,9 @@ export class RDStationDriver extends Oauth2Driver<RDStationAccessToken, RDStatio
    * is made by the base implementation of "Oauth2" driver and this is a
    * hook to pre-configure the request.
    */
-  // protected configureRedirectRequest(request: RedirectRequest<YourDriverScopes>) {}
+  protected configureRedirectRequest(request: RedirectRequest<`RDStation`>) {
+    request.clear()
+  }
 
   /**
    * Optionally configure the access token request. The actual request is made by
